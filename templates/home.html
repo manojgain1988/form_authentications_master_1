@@ -8,11 +8,28 @@
 {% block content %} 
     <h1 class="text-center py-2 text-decoration-underline">This is Home Page</h1>
 
-    {% if messages %}
+    {% comment %} {% if messages %}
     {% for message in messages %}
     <h3 class="text-danger text-center">{{ message }}</h3>
     {% endfor %}
-    {% endif %}
+    {% endif %} {% endcomment %}
+    
+    <h3 class='text-center'>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" role="alert">
+        {{message}}
+        </div>
+        {% else %}
+        <div class="alert alert-success" role="alert">
+        {{message}}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        </h3>
+  
 
 
 
