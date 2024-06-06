@@ -77,8 +77,6 @@ def loginPage(request):
 
 
 
-
-
 def logoutPage(request):
     logout(request)
     messages.success(request, 'Successfull Logout !')

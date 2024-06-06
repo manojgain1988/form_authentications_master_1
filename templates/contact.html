@@ -11,28 +11,26 @@ Contact page
 <div class="container col-4">
     <h1 class="text-center py-2 text-decoration-underline">This is Contact Page</h1>
 
+    <h3 class='text-center'>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" role="alert">
+        {{message}}
+        </div>
+        {% else %}
+        <div class="alert alert-success" role="alert">
+        {{message}}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        </h3>
+  
       
-        <form action="#" method="POST" class="was-validated">
+        <form action="{% url 'contact' %}" method="POST" class="was-validated">
           {% csrf_token %}
          
-          <h3 class='text-center'>
-          {% if messages %}
-          {% for message in messages %}
-          {% if message.tags == 'error' %}
-          <div class="alert alert-danger" role="alert">
-          {{message}}
-          </div>
-          {% else %}
-          <div class="alert alert-success" role="alert">
-          {{message}}
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% endif %}
-          </h3>
-    
-    
-    
           <div class=" form-group mb-3">
               <label for="text">Name</label>
               <input type="text" class="form-control" id="text" name="name" aria-describedby="emailHelp" placeholder="Full Name">
@@ -53,7 +51,7 @@ Contact page
               <input type="city" class="form-control" id="city" name="city" aria-describedby="emailHelp" placeholder="City">
           </div>
     
-         <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="submit" class="btn btn-danger">Submit</button>
       </form>
 </div>
 {% endblock content %}
